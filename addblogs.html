@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="addblog.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-head">
+            <h2 id="form-head"></h2>
+        </div>
+        <div class="form-content">
+            <div class="content-1">
+                <form class="form-1">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" placeholder="Enter the title">
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Short Description</label>
+                        <textarea id="description" name="description"
+                            placeholder="Enter a short description"></textarea>
+                        <span class="textarea-limit">0/200</span>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="image-preview" id="imagePreview"></div>
+                    <div id="editor"></div>
+                </form>
+            </div>
+            <div class="content-2">
+                <form class="form-2">
+                    <h2>Categories</h2>
+                    <ul>
+                        <li><input type="radio" name="Categories" value="Personal Blogs"> Personal Blogs</li>
+                        <li><input type="radio" name="Categories" value="Business Blogs"> Business Blogs</li>
+                        <li><input type="radio" name="Categories" value="Tech blogs"> Tech blogs</li>
+                        <li><input type="radio" name="Categories" value="Fashion blogs"> Fashion blogs</li>
+                        <li><input type="radio" name="Categories" value="Educational Blogs"> Educational Blogs</li>
+                        <li><input type="radio" name="Categories" value="Professional Blogs"> Professional Blogs</li>
+                        <li><input type="radio" name="Categories" value="Travel Blogs"> Travel Blogs</li>
+                        <li><input type="radio" name="Categories" value="Fitness blogs"> Fitness blogs</li>
+                        <li><input type="radio" name="Categories" value="Food blogs"> Food blogs</li>
+                    </ul>
+                    <span class="form-error"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="publish-btn-container">
+        <button type="button" class="submit-btn" onclick="return submitForm()">Publish <span><i
+                    class="bi bi-send-plus"></i></span></button>
+    </div>
+    <div class="data-table">
+        <h2>Blogs Dashboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>BlogID</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Published Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: {
+                    container: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block'],
+                        [{ 'header': 1 }, { 'header': 2 }],
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        [{ 'script': 'sub' }, { 'script': 'super' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        ['image'],
+                        [{ 'align': [] }],
+                        [{ 'size': ['small', false, 'large', 'huge'] }],
+                        [{ 'color': [] }, { 'background': [] }],
+                    ],
+                    handlers: {
+                        'image': selectLocalImage
+                    }
+                }
+            }
+        });
+        function selectLocalImage() {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.click();
+
+            input.onchange = () => {
+                const file = input.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const range = quill.getSelection();
+                        const base64Image = e.target.result;
+                        quill.insertEmbed(range.index, 'image', base64Image);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+        }
+
+        quill.getModule('toolbar').addHandler('align', (value) => {
+            let imgElement = document.querySelector('img.ql-selected');
+            if (imgElement) {
+                imgElement.classList.remove('float-left', 'float-right');
+                if (value === 'right') {
+                    imgElement.classList.add('float-right');
+                }
+                else if (value === false) {
+                    imgElement.classList.add('float-left');
+                }
+                else {
+                    console.log(value);
+                }
+            }
+        });
+
+        document.querySelector('#editor').addEventListener('click', (event) => {
+            if (event.target.tagName === 'IMG') {
+                document.querySelectorAll('img').forEach(img => img.classList.remove('ql-selected'));
+                event.target.classList.add('ql-selected');
+            }
+        });
+    </script>
+    <script src="./addblogs.js"></script>
+</body>
+
+</html>

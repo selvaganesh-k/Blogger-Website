@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .blog_view {
+            width: 96%;
+            height: max-content;
+            padding: 2%;
+        }
+
+        .ql-align-right {
+            text-align: right;
+        }
+
+        .ql-align-right img {
+            width: 50%;
+            float: right;
+        }
+
+        .ql-align-left {
+            text-align: left;
+        }
+
+        .ql-align-left img {
+            width: 50%;
+            float: left;
+        }
+
+        .ql-align-center {
+            text-align: center;
+        }
+
+        .ql-align-justify {
+            text-align: justify;
+        }
+
+        .small {
+            width: 25%;
+        }
+
+        .medium {
+            width: 50%;
+        }
+
+        .large {
+            width: 75%;
+        }
+
+        .original {
+            width: 100%;
+        }
+
+        .ql-selected {
+            border: 2px solid #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blog_view">
+
+    </div>
+</body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = Number(urlParams.get('id'));
+    let blogData = JSON.parse(localStorage.getItem('BlogData')) || [];
+    console.log(blogData);
+    const blog_view = blogData.find(blog => blog.BlogId === id);
+    console.log(blog_view)
+    if (blog_view) {
+        console.log('show')
+        document.querySelector('title').textContent = blog_view.blogTitle;
+        document.querySelector('.blog_view').innerHTML = blog_view.blogContent;
+    }
+    else {
+        document.querySelector('.blog_view').innerHTML = '<p>Blog not found.</p>';
+    }
+
+</script>
+
+</html>

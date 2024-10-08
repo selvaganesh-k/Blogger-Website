@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloging Site</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="blogingsite.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav_links">
+            <span class="hamburger"><i class="bi bi-list"></i></span><span><img
+                    src="./images/blogger-logo-blogger-logo-transparent-blogger-icon-transparent-free-free-png-removebg-preview.png"
+                    width="50px" height="50px" alt=""></span>
+        </div>
+        <div class="nav_btn">
+            <span><input type="search" placeholder="Search blogs here..." class="search-btn"></span>
+            <span><a href="./addblogs.html" target="_blank" class="btn">Add New</a></span>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="side_menu">
+            <div>
+                <h2>Filters</h2>
+            </div>
+            <ul id="filterOptions">
+                <li><input type="checkbox" value="Personal Blogs">Personal Blogs</li>
+                <li><input type="checkbox" value="Business Blogs">Business Blogs</li>
+                <li><input type="checkbox" value="Tech blogs">Tech blogs</li>
+                <li><input type="checkbox" value="Fashion blogs">Fashion blogs</li>
+                <li><input type="checkbox" value="Educational Blogs">Educational Blogs</li>
+                <li><input type="checkbox" value="Professional Blogs">Professional Blogs</li>
+                <li><input type="checkbox" value="Travel Blogs">Travel Blogs</li>
+                <li><input type="checkbox" value="Fitness blogs">Fitness blogs</li>
+                <li><input type="checkbox" value="Food blogs">Food blogs</li>
+            </ul>
+            <div>
+                <button class="button" onclick="applyFilters()">Apply Filter</button>
+            </div>
+        </div>
+        <div class="blog_cards">
+            <div class="head">
+                <h2>PUBLISHED Blogs</h2>
+            </div>
+            <div class="cards">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./blogingsite.js"></script>
+
+</html>

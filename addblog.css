@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#editor {
+    width: 100%;
+}
+
+.form-container {
+    background-color: #fff;
+    width: 96%;
+    padding: 2%;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group label::after {
+    content: '*';
+    color: red;
+    margin-left: 5px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: none;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff8a31;
+}
+
+.textarea-limit {
+    color: #ff8a31;
+    font-size: 13px;
+}
+
+.image-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: 100px;
+    border-radius: 4px;
+}
+
+.form-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.content-1 {
+    width: 60%;
+}
+
+.content-2 {
+    width: 20%;
+}
+
+.content-2 form h2 {
+    font-weight: 600;
+    text-align: left;
+    color: #555 !important;
+}
+
+.content-2 ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.content-2 ul li input {
+    margin-right: 10px;
+}
+
+.publish-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #ff8a31;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #ff9d51;
+}
+
+.form-error {
+    color: red;
+}
+
+.has-error input,
+.has-error textarea {
+    border-color: red !important;
+}
+
+/* data table */
+
+.data-table {
+    margin-top: 5%;
+    width: 100%;
+}
+
+.data-table h2 {
+    text-align: center;
+}
+
+.data-table table {
+    width: 96%;
+    margin: 2%;
+}
+
+.data-table table {
+    border-collapse: collapse;
+}
+
+.data-table table,
+tr,
+th,
+td {
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+}
+
+.edit-btn {
+    background-color: #0d8000;
+    border: 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.edit-btn:hover {
+    background-color: #13b102;
+}
+
+.delete-btn {
+    background-color: #bf0303;
+    border: 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.delete-btn:hover {
+    background-color: #ff0606;
+}
+
+.btn-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* quill design */
+
+.float-left {
+    float: left;
+    margin-right: 15px;
+}
+
+.float-right {
+    float: right;
+    margin-left: 15px;
+}
+
+.ql-selected {
+    border: 2px solid #007bff;
+}
