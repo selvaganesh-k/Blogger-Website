@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="description">Short Description</label>
                         <textarea id="description" name="description"
-                            placeholder="Enter a short description"></textarea>
+                            placeholder="Enter a short description" oninput="checkLen(event)"></textarea>
                         <span class="textarea-limit">0/200</span>
                         <span class="form-error"></span>
                     </div>
@@ -123,6 +123,8 @@
             };
         }
 
+
+
         quill.getModule('toolbar').addHandler('align', (value) => {
             let imgElement = document.querySelector('img.ql-selected');
             if (imgElement) {
@@ -133,9 +135,11 @@
                 else if (value === false) {
                     imgElement.classList.add('float-left');
                 }
-                else {
-                    console.log(value);
-                }
+                const range = quill.getSelection();
+                quill.insertEmbed(range.index + 1, 'block', '<div class="clear-both"></div>');
+            }
+            else {
+                quill.format('align', value);
             }
         });
 
@@ -143,6 +147,8 @@
             if (event.target.tagName === 'IMG') {
                 document.querySelectorAll('img').forEach(img => img.classList.remove('ql-selected'));
                 event.target.classList.add('ql-selected');
+            } else {
+                document.querySelectorAll('img').forEach(img => img.classList.remove('ql-selected'));
             }
         });
     </script>
